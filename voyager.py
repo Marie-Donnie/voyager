@@ -30,15 +30,17 @@ def create_image(name):
 def create_user():
     print(ide.create_user())
 
-def create_vm_from_image(token, image):
+def create_vm_from_image(token, flavor):
     if ide.validate_token(token):
-        print(img.get_image(image))
+        image = img.get_image(flavor)
+        cpt.create_vm(image)
 
-
-
+def function_to_test():
+    create_vm_from_image("lol", "mhosyGKW")
 
 if __name__ == '__main__':
-    create_vm_from_image(42, "mhosyGKW")
+    function_to_test()
+
     # args = docopt(__doc__,
     #               version='voyager version 1.0.0',
     #               options_first=True)

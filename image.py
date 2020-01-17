@@ -18,9 +18,9 @@ def create_image(name):
 
 def get_image(flavor_uuid):
     path = "images/" + flavor_uuid
-    try:
+    if os.path.isfile(path):
         with open(path) as f:
             name = f.readlines()
-            return name
-    except IOError:
-        print("Image not accessible")
+            return name[0]
+    else:
+        raise IOError("Image %s not found." % (flavor_uuid) )
